@@ -14,6 +14,7 @@ Eduard Stefan
 Diego
 Rasma
 Bilal
+Ismael
 >>>>>>> e573f4d8bdfdd609e42de321fc1212df2b9b35b2
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
