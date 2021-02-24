@@ -32,4 +32,4 @@
     - Indicamos la rama base donde vamos a mezclar los cambios, y luego la rama (compare) donde hemos hecho los cambios.
     - Se le pone un título y una descripción detallada
     - Se marca como reviewer al profesor
-
+    - Se pulsa el botón de crear
