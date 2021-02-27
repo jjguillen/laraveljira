@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Localizacion;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LocalizacionFactory extends Factory
@@ -22,7 +23,12 @@ class LocalizacionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'ciudad' => $this->faker->city,
+            'nombre_edificio' => 'Edificio ' . $this->faker->word,
+            'direccion_edificio' => $this->faker->address,
+            'numero_sala' => $this->faker->randomDigitNot(0),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ];
     }
 }

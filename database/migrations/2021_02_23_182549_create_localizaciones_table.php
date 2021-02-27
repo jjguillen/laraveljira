@@ -15,6 +15,12 @@ class CreateLocalizacionesTable extends Migration
     {
         Schema::create('localizaciones', function (Blueprint $table) {
             $table->id();
+
+            $table->string('ciudad');
+            $table->string('nombre_edificio');
+            $table->string('direccion_edificio');
+            $table->integer('numero_sala');
+
             $table->timestamps();
         });
     }
