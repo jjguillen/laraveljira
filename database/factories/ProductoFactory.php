@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Categoria;
 use App\Models\Localizacion;
 use App\Models\Producto;
 use Carbon\Carbon;
@@ -36,6 +37,7 @@ class ProductoFactory extends Factory
                 'desaparecido'
             ]),
             'localizacion_id' => Localizacion::all()->random()->id,
+            'categoria_id' => Categoria::all()->random()->id,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ];
