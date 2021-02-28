@@ -6,14 +6,18 @@ use Illuminate\View\Component;
 
 class Row extends Component
 {
+    public $resourceId;
+    public $resourceName;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($resourceId, $resourceName)
     {
-        //
+        $this->resourceId = $resourceId;
+        $this->resourceName = $resourceName;
     }
 
     /**
