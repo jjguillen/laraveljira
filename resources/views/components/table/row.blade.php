@@ -2,7 +2,7 @@
   {{ $slot }}
   <x-table.cell>
     <div class="flex justify-center space-x-1">
-      <a href="{{ url('/' . $resourceName . '/' . $id . '/edit') }}"
+      <a href="{{ url('/' . $resourceName . '/' . $resourceId . '/edit') }}"
         class="border-2 border-indigo-200 rounded-md p-1">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
           class="h-4 w-4 text-indigo-500">
@@ -10,7 +10,8 @@
             d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
         </svg>
       </a>
-      <a href="{{ url('/' . $resourceName . '/' . $id . '/delete') }}" class="border-2 border-red-200 rounded-md p-1">
+      <a href="{{ url('/' . $resourceName . '/' . $resourceId . '/delete') }}"
+        class="border-2 border-red-200 rounded-md p-1">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
           class="h-4 w-4 text-red-500">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
