@@ -6,7 +6,6 @@ use Illuminate\View\Component;
 
 class InputNumber extends Component
 {
-    public $id;
     public $name;
 
     /**
@@ -14,9 +13,8 @@ class InputNumber extends Component
      *
      * @return void
      */
-    public function __construct($id, $name)
+    public function __construct($name)
     {
-        $this->id = $id;
         $this->name = $name;
     }
 
