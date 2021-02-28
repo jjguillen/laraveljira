@@ -17,7 +17,7 @@
     </x-table.head>
     <x-table.body>
       @foreach ($productos as $producto)
-        <x-table.row>
+        <x-table.row resource-name="productos" :resource-id="$producto->id">
           <x-table.cell>--Replace with image--</x-table.cell>
           <x-table.cell>{{ $producto->codigo }}</x-table.cell>
           <x-table.cell>{{ $producto->modelo }}</x-table.cell>
