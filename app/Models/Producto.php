@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Producto extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'codigo',
+        'model',
+        'fabricante',
+        'descripcion',
+        'imagen',
+        'stock',
+        'estado',
+        'localizacion_id'
+    ];
+
+    public function localizacion(){
+        return $this->belongsTo(Localizacion::class);;
+    }
 }

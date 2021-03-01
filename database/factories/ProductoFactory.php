@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Localizacion;
 use App\Models\Producto;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProductoFactory extends Factory
@@ -22,7 +24,20 @@ class ProductoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'codigo' => $this->faker->numerify('# ##### #####'),
+            'modelo' => 'MODELO' . $this->faker->randomDigitNotNull,
+            'fabricante' => $this->faker->company,
+            'descripcion' => $this->faker->text(200),
+            'imagen' => '',
+            'stock' => $this->faker->randomDigit,
+            'estado' => $this->faker->randomElement([
+                'activo',
+                'roto',
+                'desaparecido'
+            ]),
+            'localizacion_id' => Localizacion::all()->random()->id,
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ];
     }
 }
