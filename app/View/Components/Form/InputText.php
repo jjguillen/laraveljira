@@ -7,15 +7,17 @@ use Illuminate\View\Component;
 class InputText extends Component
 {
     public $name;
+    public $value;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($name)
+    public function __construct($name = "", $value = "")
     {
         $this->name = $name;
+        $this->value = $value;
     }
 
     /**

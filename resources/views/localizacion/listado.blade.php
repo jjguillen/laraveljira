@@ -9,7 +9,7 @@
         </x-table.head>
         <x-table.body>
             @foreach ($localizaciones as $localizacion)
-                <x-table.row resource-name="localizaciones" :resource-id="{{ $localizacion->id }}">
+                <x-table.row resource-name="localizaciones" :resource-id="$localizacion->id">
                     <x-table.cell>{{ $localizacion->ciudad }}</x-table.cell>
                     <x-table.cell>{{ $localizacion->nombre_edificio }}</x-table.cell>
                     <x-table.cell>{{ $localizacion->direccion_edificio }}</x-table.cell>
