@@ -28,5 +28,4 @@ Además, añade a la tabla de la base de datos los campos created_at y updated_a
     3. mensaje, cuando queramos pasar un mensaje a imprimir en otra vista
     4. el resto os tenéis que poner de acuerdo
 
-
     
