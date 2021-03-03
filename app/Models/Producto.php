@@ -17,10 +17,15 @@ class Producto extends Model
         'imagen',
         'stock',
         'estado',
-        'localizacion_id'
+        'localizacion_id',
+        'categoria_id'
     ];
 
     public function localizacion(){
         return $this->belongsTo(Localizacion::class);;
+    }
+
+    public function categoria(){
+        return $this->belongsTo(Categoria::class);;
     }
 }

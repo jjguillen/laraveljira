@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-table.table resource-name="Localizacion">
+    <x-table.table resource-name="localizaciones">
         <x-table.head>
             <x-table.head-cell>Ciudad</x-table.head-cell>
             <x-table.head-cell>Nombre edificio</x-table.head-cell>

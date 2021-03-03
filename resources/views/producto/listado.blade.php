@@ -4,7 +4,7 @@
       {{ __('Dashboard') }}
     </h2>
   </x-slot>
-  <x-table.table resource-name="Producto">
+  <x-table.table resource-name="productos">
     <x-table.head>
       <x-table.head-cell>Imagen</x-table.head-cell>
       <x-table.head-cell>Codigo</x-table.head-cell>
