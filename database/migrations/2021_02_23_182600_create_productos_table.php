@@ -20,7 +20,7 @@ class CreateProductosTable extends Migration
             $table->string('modelo');
             $table->string('fabricante');
             $table->longText('descripcion');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->integer('stock');
             $table->string('estado');
 
