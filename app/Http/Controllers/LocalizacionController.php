@@ -14,7 +14,7 @@ class LocalizacionController extends Controller
      */
     public function index()
     {
-        $localizaciones = Localizacion::paginate(3);
+        $localizaciones = Localizacion::all();
         return view('localizacion.listado', ['localizaciones' => $localizaciones]);
     }
 
@@ -25,7 +25,7 @@ class LocalizacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('localizacion.nuevo');
     }
 
     /**
@@ -36,7 +36,24 @@ class LocalizacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'ciudad' => 'required',
+            'nombre_edificio' => 'required',
+            'direccion_edificio' => 'required',
+            'numero_sala' => 'required|numeric|min:0',
+        ]);
+
+        $localizacion = new Localizacion;
+        $localizacion->ciudad = $request->ciudad;
+        $localizacion->nombre_edificio = $request->nombre_edificio;
+        $localizacion->direccion_edificio = $request->direccion_edificio;
+        $localizacion->numero_sala = $request->numero_sala;
+        $localizacion->save();
+
+        return redirect()->action(
+            [LocalizacionController::class, 'show'],
+            ['localizacion' => $localizacion]
+        );
     }
 
     /**
@@ -47,7 +64,7 @@ class LocalizacionController extends Controller
      */
     public function show(Localizacion $localizacion)
     {
-        //
+        return view('localizacion.detalle', ['localizacion' => $localizacion]);
     }
 
     /**
@@ -58,7 +75,7 @@ class LocalizacionController extends Controller
      */
     public function edit(Localizacion $localizacion)
     {
-        //
+        return view('localizacion.editar', ['localizacion' => $localizacion]);
     }
 
     /**
@@ -70,7 +87,23 @@ class LocalizacionController extends Controller
      */
     public function update(Request $request, Localizacion $localizacion)
     {
-        //
+        $validated = $request->validate([
+            'ciudad' => 'required',
+            'nombre_edificio' => 'required',
+            'direccion_edificio' => 'required',
+            'numero_sala' => 'required|numeric|min:0',
+        ]);
+
+        $localizacion->ciudad = $request->ciudad;
+        $localizacion->nombre_edificio = $request->nombre_edificio;
+        $localizacion->direccion_edificio = $request->direccion_edificio;
+        $localizacion->numero_sala = $request->numero_sala;
+        $localizacion->save();
+
+        return redirect()->action(
+            [LocalizacionController::class, 'show'],
+            ['localizacion' => $localizacion]
+        );
     }
 
     /**
@@ -81,6 +114,7 @@ class LocalizacionController extends Controller
      */
     public function destroy(Localizacion $localizacion)
     {
-        //
+        $localizacion->delete();
+        return redirect()->action([LocalizacionController::class, 'index']);
     }
 }
