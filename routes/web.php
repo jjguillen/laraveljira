@@ -27,13 +27,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     // Rutas para categorias
-    Route::resource('/categorias', CategoriaController::class);
+    Route::resource('/categorias', CategoriaController::class)->parameters([
+        'categorias' => 'categoria'
+    ]);
 
     // Rutas para productos
-    Route::resource('/productos', ProductoController::class);
+    Route::resource('/productos', ProductoController::class)->parameters([
+        'productos' => 'producto'
+    ]);;
 
     // Rutas para localizaciones
-    Route::resource('/localizaciones', LocalizacionController::class);
+    Route::resource('/localizaciones', LocalizacionController::class)->parameters([
+        'localizaciones' => 'localizacion'
+    ]);
 
     // Ruta para el inventario
     Route::get('/inventario', function () {
