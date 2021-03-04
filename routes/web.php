@@ -14,7 +14,7 @@ use App\Http\Controllers\LocalizacionController;
 |
 */
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('welcome');
 });
 
@@ -27,19 +27,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     // Rutas para categorias
-    Route::group(['prefix' => 'categorias'], function () {
-        Route::resource('/', CategoriaController::class)->except('edit');
-    });
+    Route::resource('/categorias', CategoriaController::class);
 
     // Rutas para productos
-    Route::group(['prefix' => 'productos'], function () {
-        Route::resource('/', ProductoController::class);
-    });
+    Route::resource('/productos', ProductoController::class);
 
     // Rutas para localizaciones
-    Route::group(['prefix' => 'localizaciones'], function () {
-        Route::resource('/', LocalizacionController::class)->except('edit');
-    });
+    Route::resource('/localizaciones', LocalizacionController::class);
 
     // Ruta para el inventario
     Route::get('/inventario', function () {
