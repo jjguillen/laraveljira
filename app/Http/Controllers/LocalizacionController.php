@@ -14,8 +14,7 @@ class LocalizacionController extends Controller
      */
     public function index()
     {
-        $localizaciones = Localizacion::all();
-        return view('localizacion.listado', ['localizaciones' => $localizaciones]);
+        return view('localizacion.listado', ['localizaciones' => Localizacion::paginate(5)]);
     }
 
     /**
@@ -50,10 +49,7 @@ class LocalizacionController extends Controller
         $localizacion->numero_sala = $request->numero_sala;
         $localizacion->save();
 
-        return redirect()->action(
-            [LocalizacionController::class, 'show'],
-            ['localizacion' => $localizacion]
-        );
+        return redirect()->action([LocalizacionController::class, 'index']);
     }
 
     /**
@@ -100,10 +96,7 @@ class LocalizacionController extends Controller
         $localizacion->numero_sala = $request->numero_sala;
         $localizacion->save();
 
-        return redirect()->action(
-            [LocalizacionController::class, 'show'],
-            ['localizacion' => $localizacion]
-        );
+        return redirect()->action([LocalizacionController::class, 'index']);
     }
 
     /**
