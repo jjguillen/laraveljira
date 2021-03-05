@@ -12,5 +12,8 @@
                 </x-table.row>
             @endforeach
         </x-table.body>
+        <x-slot>
+            {{ $caterias->link()}}
+        </x-slot>
     </x-table.table>
 </x-app-layout>
