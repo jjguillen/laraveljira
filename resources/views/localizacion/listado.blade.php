@@ -17,6 +17,9 @@
                 </x-table.row>
             @endforeach
         </x-table.body>
+        <x-slot name="footer">
+            {{ $localizaciones->links() }}
+        </x-slot>
     </x-table.table>
 
 </x-app-layout>

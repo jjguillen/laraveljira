@@ -41,4 +41,8 @@
     {{ $slot }}
   </table>
   <!-- End Table -->
+  <div class="p-2 bg-white">
+    {{ $footer }}
+  </div>
+
 </div>
