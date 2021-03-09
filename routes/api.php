@@ -1,17 +1,18 @@
 <?php
 
-use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\LocalizacionController;
+use App\Http\Controllers\ApiController;
 use App\Http\Resources\CategoriaResource;
 use App\Http\Resources\LocalizacionResource;
 use App\Http\Resources\ProductoResource;
 use App\Models\Categoria;
 use App\Models\Localizacion;
 use App\Models\Producto;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,7 @@ Route::get('/categoria', function () {
 });
 Route::get('/categoria/{categoria}', function () {
     return CategoriaResource::collection(Categoria::all());
-});api_add
+});
 Route::middleware('auth:sanctum')->post('/producto', [ApiController::class, 'api_add_producto']);
-Route::middleware('auth:sanctum')->delete('/producto/codigo/delete/{restauraapiStorente}', [RestauranteController::class, 'apiDelete']);
+Route::middleware('auth:sanctum')->delete('/producto/codigo/delete/', [ApiController::class, 'api_delete_producto_por_codigo']);
 
