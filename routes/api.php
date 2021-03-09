@@ -36,7 +36,7 @@ Route::get('/localizacion', function () {
     return LocalizacionResource::collection(Localizacion::paginate());
 });
 
-Route::get('/producto/codigo', function ($codigo) {
+Route::get('/producto/{codigo}', function ($codigo) {
     return new ProductoResource(Producto::findOrFail($codigo));
 });
 
@@ -54,5 +54,5 @@ Route::get('/categoria/{categoria}', function () {
     return CategoriaResource::collection(Categoria::all());
 });
 Route::middleware('auth:sanctum')->post('/producto/add', [ApiController::class, 'api_add_producto']);
-Route::middleware('auth:sanctum')->delete('/producto/codigo/delete/{producto}', [ApiController::class, 'api_delete_producto_por_codigo']);
+Route::middleware('auth:sanctum')->delete('/producto/{producto}/delete', [ApiController::class, 'api_delete_producto_por_codigo']);
 

@@ -17,7 +17,7 @@ namespace Faker;
  * @property string $bloodType
  * @property string $bloodRh
  * @property string $bloodGroup
-
+ *
  * @property string $citySuffix
  * @property string $streetSuffix
  * @property string $buildingNumber
