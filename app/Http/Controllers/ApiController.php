@@ -28,10 +28,10 @@ class ApiController extends Controller
     }
     public function api_delete_producto_por_codigo(Producto $producto)
     {
-        $this->authorize('delete', $producto);
-        $producto->delete();
+                $this->authorize('delete', $producto);
+                $producto->delete();
+                return response(['message' => 'Deleted successfully'], 201);
 
-        return response(['message' => 'Deleted successfully'], 201);
     }
 
 
