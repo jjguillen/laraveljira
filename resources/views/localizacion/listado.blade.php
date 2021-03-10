@@ -9,11 +9,18 @@
         </x-table.head>
         <x-table.body>
             @foreach ($localizaciones as $localizacion)
-                <x-table.row resource-name="localizaciones" :resource-id="$localizacion->id">
+                <x-table.row>
                     <x-table.cell>{{ $localizacion->ciudad }}</x-table.cell>
                     <x-table.cell>{{ $localizacion->nombre_edificio }}</x-table.cell>
                     <x-table.cell>{{ $localizacion->direccion_edificio }}</x-table.cell>
                     <x-table.cell>{{ $localizacion->numero_sala }}</x-table.cell>
+                    <x-table.cell>
+                        <div class="flex justify-center space-x-2">
+                            <x-button.see url='/admin/localizaciones/{{ $localizacion->id }}' />
+                            <x-button.edit url='/admin/localizaciones/{{ $localizacion->id }}/edit' />
+                            <x-button.delete actionUrl='/admin/localizaciones/{{ $localizacion->id }}' />
+                        </div>
+                    </x-table.cell>
                 </x-table.row>
             @endforeach
         </x-table.body>

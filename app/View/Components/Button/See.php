@@ -1,20 +1,21 @@
 <?php
 
-namespace App\View\Components\Table;
+namespace App\View\Components\Button;
 
 use Illuminate\View\Component;
 
-class Row extends Component
+class See extends Component
 {
+    public $url;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($url = "")
     {
-        //
+        $this->url = $url;
     }
 
     /**
@@ -24,6 +25,6 @@ class Row extends Component
      */
     public function render()
     {
-        return view('components.table.row');
+        return view('components.button.see');
     }
 }
