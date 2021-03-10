@@ -12,8 +12,8 @@
                 </x-table.row>
             @endforeach
         </x-table.body>
-        <x-slot>
-            {{ $caterias->link()}}
+        <x-slot name="footer">
+            {{ $categorias->links()}}
         </x-slot>
     </x-table.table>
 </x-app-layout>
