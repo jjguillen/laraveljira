@@ -3,9 +3,14 @@
     <div class="flex justify-between items-center bg-gray-50 border-b px-6 py-4">
         <p class="text-xl text-gray-800 font-semibold uppercase">{{ $resourceName }}</p>
 
-        <a href="{{ url('/admin/' . $resourceName . '/create') }}"
-            class="bg-gray-800 hover:bg-gray-900 text-white text-xs px-6 py-2 rounded-lg border-0">Crear nuevo
-        </a>
+        <div class="space-x-2">
+            <a href="{{ url('/admin/' . $resourceName . '/create') }}"
+                class="bg-gray-800 hover:bg-gray-900 text-white text-xs px-6 py-2 rounded-lg border-0">Crear nuevo
+            </a>
+            <a href="{{ url('/admin/' . $resourceName . '/pdf') }}"
+                class="bg-gray-800 hover:bg-gray-900 text-white text-xs px-6 py-2 rounded-lg border-0">Generar PDF
+            </a>
+        </div>
     </div>
     <!-- End Header -->
 

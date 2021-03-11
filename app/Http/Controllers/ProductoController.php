@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use App\Models\Localizacion;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class ProductoController extends Controller
 {
@@ -141,5 +143,25 @@ class ProductoController extends Controller
     {
         $producto->delete();
         return redirect(url('admin/productos'));
+    }
+
+    /**
+     * Generate and stream a PDF file with specified resources.
+     * After it is generated, the user decides if download it or not.
+     */
+    public function createPDF()
+    {
+        $data = Producto::paginate(50);
+
+        // los 'productos' son los datos que se pasan a la vista 'producto.inventario_pdf'
+        view()->share('productos', $data);
+
+        // se crea el fichero
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('producto.inventario_pdf', $data)
+            ->setPaper('a4', 'landscape')
+            ->setOptions(['defaultFont' => 'sans-serif']);
+
+        return $pdf->stream();
     }
 }
