@@ -13,9 +13,9 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categorias = Categoria::paginate(5);
+        $categorias = Categoria::where('nombre', 'LIKE', $request->buscar)->paginate(5);
 
         return view("categoria.listado", ["categorias" => $categorias]);
     }
