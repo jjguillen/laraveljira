@@ -32,6 +32,13 @@
           <x-table.cell>{{ $producto->categoria->nombre }}</x-table.cell>
           <x-table.cell>{{ $producto->localizacion->ciudad }} - {{ $producto->localizacion->nombre_edificio }}
           </x-table.cell>
+          <x-table.cell>
+            <div class="flex justify-center space-x-2">
+              <x-button.see url='/admin/productos/{{ $producto->id }}' />
+              <x-button.edit url='/admin/productos/{{ $producto->id }}/edit' />
+              <x-button.delete actionUrl='/admin/productos/{{ $producto->id }}' />
+            </div>
+          </x-table.cell>
         </x-table.row>
       @endforeach
     </x-table.body>
