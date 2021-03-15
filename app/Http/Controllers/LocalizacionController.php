@@ -12,9 +12,12 @@ class LocalizacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('localizacion.listado', ['localizaciones' => Localizacion::paginate(5)]);
+        $localizaciones = Localizacion::where('ciudad', 'LIKE', "%$request->buscar%")
+            ->orWhere('nombre_edificio', 'LIKE', "%$request->buscar%")
+            ->paginate(5);
+        return view('localizacion.listado', ['localizaciones' => $localizaciones]);
     }
 
     /**

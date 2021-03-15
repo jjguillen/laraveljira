@@ -9,11 +9,16 @@
                 <x-table.row resource-name="categorias" :resource-id="$categoria->id">
                     <x-table.cell>{{ $categoria->id }}</x-table.cell>
                     <x-table.cell>{{ $categoria->nombre }}</x-table.cell>
+                    <x-table.cell>
+                        <div class="flex justify-center space-x-2">
+                            <x-button.delete actionUrl='/admin/categoria/{{ $categoria->id }}' />
+                        </div>
+                    </x-table.cell>
                 </x-table.row>
             @endforeach
         </x-table.body>
-        <x-slot>
-            {{ $caterias->link()}}
+        <x-slot name="footer">
+            {{ $categorias->links()}}
         </x-slot>
     </x-table.table>
 </x-app-layout>

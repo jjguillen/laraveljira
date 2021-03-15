@@ -13,11 +13,11 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categorias = Categoria::paginate(5);
+        $categorias = Categoria::where('nombre', 'LIKE', $request->buscar)->paginate(5);
 
-        return view("admin.categorias", ["categorias" => $categorias]);
+        return view("categoria.listado", ["categorias" => $categorias]);
     }
 
     /**
@@ -27,7 +27,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoria.nuevo');
     }
 
     /**
@@ -38,9 +38,13 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Categoria;
+        $validated = $request->validate([
+            'nombre' => 'required',
+        ]);
 
+        $categoria = new Categoria;
         $categoria->nombre = $request->nombre;
+        $categoria->save();
 
         return redirect()->action([CategoriaController::class, 'index']);
     }
@@ -85,9 +89,9 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Categoria $categoria)
     {
-        DB::table('categorias')->where('id', '=', $id)->delete();
+        $categoria->delete();
         return redirect()->action([CategoriaController::class, 'index']);
     }
 }

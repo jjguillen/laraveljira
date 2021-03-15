@@ -49,7 +49,15 @@
           </a>
         </x-table.cell>
       </tr>
-
+      <tr>
+        <x-table.cell colspan="2">
+          <div class="flex justify-end space-x-2">
+            <x-button.previous /> {{-- Botton para volver a la página previa --}}
+            <x-button.edit url='/admin/productos/{{ $producto->id }}/edit' />
+            <x-button.delete actionUrl='/admin/productos/{{ $producto->id }}' />
+          </div>
+        </x-table.cell>
+      </tr>
       <x-table.row resource-name="productos" :resource-id="$producto->id" />
 
     </x-table.body>
