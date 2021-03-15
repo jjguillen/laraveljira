@@ -1,20 +1,21 @@
 <?php
 
-namespace App\View\Components\Table;
+namespace App\View\Components\Button;
 
 use Illuminate\View\Component;
 
-class Row extends Component
+class Delete extends Component
 {
+    public $actionUrl;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($actionUrl = "")
     {
-        //
+        $this->actionUrl = $actionUrl;
     }
 
     /**
@@ -24,6 +25,6 @@ class Row extends Component
      */
     public function render()
     {
-        return view('components.table.row');
+        return view('components.button.delete');
     }
 }
