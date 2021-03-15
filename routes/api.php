@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
-
+Route::middleware('auth:sanctum')->group(function(){
 
 
 Route::get('/localizacion', function () {
@@ -53,6 +53,7 @@ Route::get('/categoria', function () {
 Route::get('/categoria/{categoria}', function () {
     return CategoriaResource::collection(Categoria::all());
 });
-Route::middleware('auth:sanctum')->post('/producto/add', [ApiController::class, 'api_add_producto']);
-Route::middleware('auth:sanctum')->delete('/producto/{producto}/delete', [ApiController::class, 'api_delete_producto_por_codigo']);
+Route::post('/producto/add', [ApiController::class, 'api_add_producto']);
+Route::delete('/producto/{producto}/delete', [ApiController::class, 'api_delete_producto_por_codigo']);
 
+});
