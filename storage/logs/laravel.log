@@ -3391,3 +3391,64 @@
 #32 /var/www/html/laraveljira/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
 #33 {main}
 "} 
+[2021-03-15 16:16:46] local.ERROR: Command "make:trait" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:livewire
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"make:trait\" is not defined.
+
+Did you mean one of these?
+    make:cast
+    make:channel
+    make:command
+    make:component
+    make:controller
+    make:event
+    make:exception
+    make:factory
+    make:job
+    make:listener
+    make:livewire
+    make:mail
+    make:middleware
+    make:migration
+    make:model
+    make:notification
+    make:observer
+    make:policy
+    make:provider
+    make:request
+    make:resource
+    make:rule
+    make:seeder
+    make:test at /var/www/html/laraveljira/vendor/symfony/console/Application.php:675)
+[stacktrace]
+#0 /var/www/html/laraveljira/vendor/symfony/console/Application.php(254): Symfony\\Component\\Console\\Application->find()
+#1 /var/www/html/laraveljira/vendor/symfony/console/Application.php(166): Symfony\\Component\\Console\\Application->doRun()
+#2 /var/www/html/laraveljira/vendor/laravel/framework/src/Illuminate/Console/Application.php(93): Symfony\\Component\\Console\\Application->run()
+#3 /var/www/html/laraveljira/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run()
+#4 /var/www/html/laraveljira/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle()
+#5 {main}
+"} 
