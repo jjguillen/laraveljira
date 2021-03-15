@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProductoResource;
 use App\Models\Categoria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
@@ -136,7 +137,7 @@ class ProductoController extends Controller
 
         return redirect(url('admin/productos'));
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *

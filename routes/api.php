@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\LocalizacionController;
 use App\Http\Controllers\ApiController;
+use App\Http\Controllers\API\RegisterController;
 use App\Http\Resources\CategoriaResource;
 use App\Http\Resources\LocalizacionResource;
 use App\Http\Resources\ProductoResource;
@@ -29,9 +30,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 */
+//Route::get('register', [RegisterController::class, 'register']);
+
+//Route::get('login', [RegisterController::class, 'login']);
 
 
-
+Route::middleware('auth:sanctum')->group(function(){
 Route::get('/localizacion', function () {
     return LocalizacionResource::collection(Localizacion::paginate());
 });
@@ -53,6 +57,6 @@ Route::get('/categoria', function () {
 Route::get('/categoria/{categoria}', function () {
     return CategoriaResource::collection(Categoria::all());
 });
+});
 Route::middleware('auth:sanctum')->post('/producto/add', [ApiController::class, 'api_add_producto']);
 Route::middleware('auth:sanctum')->delete('/producto/{producto}/delete', [ApiController::class, 'api_delete_producto_por_codigo']);
-
