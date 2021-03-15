@@ -16,9 +16,12 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('producto.listado', ['productos' => Producto::paginate(5)]);
+        $productos = Producto::where('codigo', 'LIKE', "%$request->buscar%")
+            ->orWhere('modelo', 'LIKE', "%$request->buscar%")
+            ->paginate(5);
+        return view('producto.listado', ['productos' => $productos]);
     }
 
     /**
