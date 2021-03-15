@@ -11,7 +11,7 @@
                     <x-table.cell>{{ $categoria->nombre }}</x-table.cell>
                     <x-table.cell>
                         <div class="flex justify-center space-x-2">
-                            <x-button.delete actionUrl='/admin/localizaciones/{{ $categoria->id }}' />
+                            <x-button.delete actionUrl='/admin/categoria/{{ $categoria->id }}' />
                         </div>
                     </x-table.cell>
                 </x-table.row>
