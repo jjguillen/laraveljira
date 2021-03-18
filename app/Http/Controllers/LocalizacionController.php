@@ -135,7 +135,6 @@ class LocalizacionController extends Controller
         $localizacionNombre = " EN " .
                               $localizacion->ciudad . ", " .
                               $localizacion->nombre_edificio . ", " .
-                              $localizacion->direccion_edificio . ", " .
                               $localizacion->numero_sala;
         $productos = $localizacion->productos()->paginate();
         return view('localizacion.productos', ['productos' => $productos, 
