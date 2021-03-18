@@ -6281,3 +6281,9 @@ avigation-menu.blade.php) at C:\\workspace\\LaravelJira\\laraveljira\\vendor\\la
 [2021-03-18 00:07:00] local.INFO: Muestra la lista de localizaciones  
 [2021-03-18 00:08:08] local.NOTICE: Eliminado correctamente la localizacion  
 [2021-03-18 00:08:08] local.INFO: Muestra la lista de localizaciones  
+[2021-03-18 09:40:06] local.INFO: Muestra la vista de los productos buscados  
+[2021-03-18 09:40:17] local.INFO: Muestra la lista de localizaciones  
+[2021-03-18 09:40:21] local.INFO: Mostrado el listado de categorias  
+[2021-03-18 09:40:28] local.INFO: Muestra la lista de localizaciones  
+[2021-03-18 09:40:34] local.INFO: Redireccion a la vista localizacion.detalle pasandole la localizacion  
+[2021-03-18 09:40:39] local.INFO: Muestra la lista de localizaciones  
