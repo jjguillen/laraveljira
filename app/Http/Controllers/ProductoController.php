@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\Localizacion;
 use Barryvdh\DomPDF\Facade\PDF;
+use Illuminate\Support\Facades\Log;
 
 class ProductoController extends Controller
 {
@@ -22,6 +23,7 @@ class ProductoController extends Controller
         $productos = Producto::where('codigo', 'LIKE', "%$request->buscar%")
             ->orWhere('modelo', 'LIKE', "%$request->buscar%")
             ->paginate(5);
+        Log::info('Muestra la vista de los productos buscados');
         return view('producto.listado', ['productos' => $productos]);
     }
 
@@ -32,6 +34,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
+        Log::info('Redireccion a la plantilla producto.nuevo pasandole todas las localizaciones y categorias');
         return view('producto.nuevo', ['localizaciones' => Localizacion::all(), 'categorias' => Categoria::all()]);
     }
 
@@ -54,12 +57,13 @@ class ProductoController extends Controller
             'localizacion' => 'required',
             'categoria' => 'required'
         ]);
+        Log::info('Validacion del request de producto');
 
         if ($request->hasFile('imagen')) {
             $extension = $request->file('imagen')->getClientOriginalExtension();
             $filenameToStore = 'procucto_ ' . $request->codigo . '.' . $extension;
-
             $request->file('imagen')->storeAs('public/imagenes_productos', $filenameToStore);
+            Log::info('Comprueba el archivo imagen y la sube a la carpeta imagenes_productos');
         }
 
         Producto::create([
@@ -73,7 +77,7 @@ class ProductoController extends Controller
             'localizacion_id' => $request->localizacion,
             'categoria_id' => $request->categoria,
         ]);
-
+            Log::notice('Creacion del nuevo producto correctamente');
         return redirect(url('/admin/productos'));
     }
 
@@ -85,6 +89,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
+        Log::info('Redireccion a la plantilla producto.detalle');
         return view('producto.detalle', compact('producto'));
     }
 
@@ -95,6 +100,7 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
+        Log::info('Redireccion a la plantilla producto.editar pasandole el producto y todas las localizaciones');
         return view('producto.editar', ['producto' => $producto, 'localizaciones' => Localizacion::all(), 'categorias' => Categoria::all()]);
     }
 
@@ -116,12 +122,14 @@ class ProductoController extends Controller
             'estado' => 'required',
             'localizacion' => 'required'
         ]);
+        Log::info('Validacion del request de producto');
+
 
         if ($request->hasFile('imagen')) {
             $extension = $request->file('imagen')->getClientOriginalExtension();
             $filenameToStore = 'procucto_ ' . $request->codigo . '.' . $extension;
-
             $request->file('imagen')->storeAs('public/imagenes_productos', $filenameToStore);
+            Log::info('Comprueba el archivo imagen y la sube a la carpeta imagenes_productos');
         }
 
         $producto->update([
@@ -134,10 +142,12 @@ class ProductoController extends Controller
             'estado' => $request->estado,
             'localizacion' => $request->localizacion
         ]);
+        Log::notice('Actualizacion del producto correctamente');
+
 
         return redirect(url('admin/productos'));
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -146,6 +156,7 @@ class ProductoController extends Controller
     public function destroy(Producto $producto)
     {
         $producto->delete();
+        Log::notice('Borrado el producto correctamente');
         return redirect(url('admin/productos'));
     }
 
@@ -165,6 +176,7 @@ class ProductoController extends Controller
         $pdf->loadView('producto.inventario_pdf', $data)
             ->setPaper('a4', 'landscape')
             ->setOptions(['defaultFont' => 'sans-serif']);
+        Log::notice('Creacion del PDF del producto correctamente');
 
         return $pdf->stream();
     }
