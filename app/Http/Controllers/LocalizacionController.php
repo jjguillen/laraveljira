@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Localizacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LocalizacionController extends Controller
 {
@@ -14,6 +15,7 @@ class LocalizacionController extends Controller
      */
     public function index(Request $request)
     {
+        Log::info('Muestra la lista de localizaciones');
         $localizaciones = Localizacion::where('ciudad', 'LIKE', "%$request->buscar%")
             ->orWhere('nombre_edificio', 'LIKE', "%$request->buscar%")
             ->paginate(5);
@@ -27,6 +29,7 @@ class LocalizacionController extends Controller
      */
     public function create()
     {
+        Log::info('Redireccion a la vista localizacion.nuevo');
         return view('localizacion.nuevo');
     }
 
@@ -51,6 +54,7 @@ class LocalizacionController extends Controller
         $localizacion->direccion_edificio = $request->direccion_edificio;
         $localizacion->numero_sala = $request->numero_sala;
         $localizacion->save();
+        Log::notice('Añadido una nueva localizacion correctamente');
 
         return redirect()->action([LocalizacionController::class, 'index']);
     }
@@ -63,6 +67,7 @@ class LocalizacionController extends Controller
      */
     public function show(Localizacion $localizacion)
     {
+        Log::info('Redireccion a la vista localizacion.detalle pasandole la localizacion');
         return view('localizacion.detalle', ['localizacion' => $localizacion]);
     }
 
@@ -74,6 +79,7 @@ class LocalizacionController extends Controller
      */
     public function edit(Localizacion $localizacion)
     {
+        Log::info('Redireccion a la vista localizacion.editar pasandole la localizacion pasandole la localizacion');
         return view('localizacion.editar', ['localizacion' => $localizacion]);
     }
 
@@ -92,12 +98,14 @@ class LocalizacionController extends Controller
             'direccion_edificio' => 'required',
             'numero_sala' => 'required|numeric|min:0',
         ]);
+        Log::info('Verificacion del Request');
 
         $localizacion->ciudad = $request->ciudad;
         $localizacion->nombre_edificio = $request->nombre_edificio;
         $localizacion->direccion_edificio = $request->direccion_edificio;
         $localizacion->numero_sala = $request->numero_sala;
         $localizacion->save();
+        Log::notice('Actualizacion de la localizacion correcta');
 
         return redirect()->action([LocalizacionController::class, 'index']);
     }
@@ -111,6 +119,7 @@ class LocalizacionController extends Controller
     public function destroy(Localizacion $localizacion)
     {
         $localizacion->delete();
+        Log::notice('Eliminado correctamente la localizacion');
         return redirect()->action([LocalizacionController::class, 'index']);
     }
 }
