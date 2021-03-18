@@ -8,6 +8,7 @@ class Table extends Component
 {
 
     public $resourceName;
+    public $resourceDetail;
     public $maxWidth;
 
     /**
@@ -15,9 +16,10 @@ class Table extends Component
      *
      * @return void
      */
-    public function __construct($resourceName, $maxWidth = 'max-w-full')
+    public function __construct($resourceName, $resourceDetail, $maxWidth = 'max-w-full')
     {
         $this->resourceName = $resourceName;
+        $this->resourceDetail = $resourceDetail;
         $this->maxWidth = $maxWidth;
     }
 

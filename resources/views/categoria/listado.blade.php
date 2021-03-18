@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-table.table resource-name="categorias">
+    <x-table.table resource-name="categorias" resource-detail="">
         <x-table.head>
             <x-table.head-cell>ID</x-table.head-cell>
             <x-table.head-cell>Nombre</x-table.head-cell>

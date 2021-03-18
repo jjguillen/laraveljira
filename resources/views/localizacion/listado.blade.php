@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <x-table.table resource-name="localizaciones">
+    <x-table.table resource-name="localizaciones" resource-detail="">
         <x-table.head>
             <x-table.head-cell>Ciudad</x-table.head-cell>
             <x-table.head-cell>Nombre edificio</x-table.head-cell>
@@ -16,6 +16,7 @@
                     <x-table.cell>{{ $localizacion->numero_sala }}</x-table.cell>
                     <x-table.cell>
                         <div class="flex justify-center space-x-2">
+                            <x-button.seeprods url='/admin/localizaciones/{{ $localizacion->id }}/productos' />
                             <x-button.see url='/admin/localizaciones/{{ $localizacion->id }}' />
                             <x-button.edit url='/admin/localizaciones/{{ $localizacion->id }}/edit' />
                             <x-button.delete actionUrl='/admin/localizaciones/{{ $localizacion->id }}' />

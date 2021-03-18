@@ -38,6 +38,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     ]);;
 
     // Rutas para localizaciones
+    Route::get('/localizaciones/{id}/productos', [LocalizacionController::class, 'viewProds']);
     Route::resource('/localizaciones', LocalizacionController::class)->parameters([
         'localizaciones' => 'localizacion'
     ]);

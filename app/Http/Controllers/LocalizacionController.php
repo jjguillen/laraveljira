@@ -122,4 +122,23 @@ class LocalizacionController extends Controller
         Log::notice('Eliminado correctamente la localizacion');
         return redirect()->action([LocalizacionController::class, 'index']);
     }
+
+    /**
+     * Display productos of the specified localizacion.
+     *
+     * @param  \App\Models\Localizacion  $localizacion
+     * @return \Illuminate\Http\Response
+     */
+    public function viewProds($id)
+    {
+        $localizacion = Localizacion::findOrFail($id);
+        $localizacionNombre = " EN " .
+                              $localizacion->ciudad . ", " .
+                              $localizacion->nombre_edificio . ", " .
+                              $localizacion->direccion_edificio . ", " .
+                              $localizacion->numero_sala;
+        $productos = $localizacion->productos()->paginate();
+        return view('localizacion.productos', ['productos' => $productos, 
+                                               'localizacion' => $localizacionNombre]);
+    }
 }
