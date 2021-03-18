@@ -30,7 +30,10 @@
           <x-table.cell>{{ $producto->stock }}</x-table.cell>
           <x-table.cell>{{ $producto->estado }}</x-table.cell>
           <x-table.cell>{{ $producto->categoria->nombre }}</x-table.cell>
-          <x-table.cell>{{ $producto->localizacion->ciudad }} - {{ $producto->localizacion->nombre_edificio }}
+          <x-table.cell>
+          <a class="text-blue-700 underline" href="{{ url('/admin/localizaciones/' . $producto->localizacion->id) }}">
+            {{ $producto->localizacion->nombre_edificio }} - {{ $producto->localizacion->ciudad }}
+          </a>
           </x-table.cell>
           <x-table.cell>
             <div class="flex justify-center space-x-2">
